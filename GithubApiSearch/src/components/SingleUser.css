@@ -1,9 +1,17 @@
 /* SingleUser.css */
+
 li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Make the user list item responsive */
+  padding: 1em; /* Use relative units for padding */
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Make the user list item responsive */
+}
+
+/* Adjust padding for smaller screens */
+@media (max-width: 768px) {
+  li {
+    padding: 0.5em; /* Reduce padding on smaller screens */
   }
+}

@@ -1,30 +1,46 @@
 /* App.css */
+
+/* Styles for the body element */
 body {
-  /* Gray background without borders */
+  /* Set the font family to Arial, sans-serif as a fallback */
   font-family: Arial, sans-serif;
+  /* Remove default margin and padding */
   margin: 0;
   padding: 0;
+  /* Set the background color to a light gray */
   background-color: #f8f9fa;
 }
 
+/* Styles for h1 elements */
 h1 {
-  /* Black basic header */
+  /* Set the color to black */
   color: #000000;
+  /* Set the font family to 'Courier New', with Courier, monospace, and sans-serif as fallbacks */
   font-family: 'Courier New', Courier, monospace, sans-serif;
+  /* Set the font style to normal and the font weight to bold */
   font-style: normal;
   font-weight: bold;
-  width: 50%; /* Take up full width of parent container */
-  max-width: 600px; /* maximum width to prevent it from becoming too wide */
-  margin: 0 auto; /* Center horizontally */
+  /* Set the width to 100% for smaller screens and limit the maximum width to 600px */
+  width: 100%;
+  max-width: 600px;
+  /* Center the element horizontally */
+  margin: 0 auto;
 }
 
+/* Styles for elements with the class of .App */
 .App {
-  height: 80%;
-  width: 80%;
+  /* Set the height and width to 100% for smaller screens and limit the maximum width to 80% */
+  height: 100%;
+  max-height: 80%;
+  width: 100%;
+  max-width: 80%;
+  /* Use flexbox for layout */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* Center the text */
   text-align: center;
+  /* Add some padding */
   padding: 20px;
 }

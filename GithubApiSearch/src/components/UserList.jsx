@@ -9,41 +9,52 @@ function UserList({ searchQuery }) {
   const [error, setError] = useState(null);
   const [showTypeahead, setShowTypeahead] = useState(false); // Add state for controlling visibility of typeahead
 
+  // https://www.altcademy.com/blog/how-to-throw-an-error-in-javascript/
+  // useEffect hook to fetch data when searchQuery changes
   useEffect(() => {
     const fetchData = async () => {
-      // https://www.altcademy.com/blog/how-to-throw-an-error-in-javascript/
-      // error handling in fetch since github has strict request limits
-      // also new state to control visibility of typeahead
       try {
+        // Only fetch data if searchQuery is not empty
         if (searchQuery.trim() !== '') {
           const response = await fetch(`https://api.github.com/search/users?q=${searchQuery}`);
+          // Throw an error if the response is not ok
           if (!response.ok) {
             throw new Error(`Failed to fetch data: Try again in one minute.`);
           }
           const data = await response.json();
+          // Update the users state with the first 20 users from the response, just because showing all users is not practical
           setUsers(data.items.slice(0, 20));
+          // Clear the error state
           setError(null);
-          setShowTypeahead(true); // Show typeahead when there are results
+          // Show the typeahead
+          setShowTypeahead(true);
         } else {
+          // Clear the users and error state and hide the typeahead if searchQuery is empty
           setUsers([]);
           setError(null);
-          setShowTypeahead(false); // Hide typeahead when no input
+          setShowTypeahead(false);
         }
       } catch (error) {
+        // Update the error state with the error message, clear the users state, and hide the typeahead if an error is caught
         setError(error.message);
         setUsers([]);
-        setShowTypeahead(false); // Hide typeahead when error is caught
+        setShowTypeahead(false);
       }
     };
 
+    // Call the fetchData function
     fetchData();
-  }, [searchQuery]);
+  }, [searchQuery]); // Dependency array for useEffect hook
 
+  // Render the UserList component
   return (
     <div className="user-list">
+      {/* Render the error message if there is an error */}
       {error && <div className="error-message">{error}</div>}
-      {showTypeahead && ( // Conditionally render typeahead based on showTypeahead state
+      {/* Render the typeahead if showTypeahead is true */}
+      {showTypeahead && (
         <ul className="user-results">
+          {/* Map over the users state and render a SingleUser component for each user */}
           {users.map(user => (
             <SingleUser key={user.id} user={user} />
           ))}
@@ -53,4 +64,5 @@ function UserList({ searchQuery }) {
   );
 }
 
+// Export the UserList component as the default export
 export default UserList;

@@ -1,11 +1,18 @@
 /* Footer.css */
 
 .footer {
-    position: fixed; /* Fixed positioning */
-    bottom: 0; /* Align to the bottom of the viewport */
-    left: 0; /* Align to the left edge of the viewport */
-    width: 100%; /* Take up full width */
-    background-color: #333; /* Example background color */
-    color: #fff; /* Example text color */
-    padding: 10px; /* Add padding for better appearance */
+  position: fixed; /* Fixed positioning */
+  bottom: 0; /* Align to the bottom of the viewport */
+  left: 0; /* Align to the left edge of the viewport */
+  width: 100%; /* Take up full width */
+  background-color: #333; /* Example background color */
+  color: #fff; /* Example text color */
+  padding: 1em; /* Use relative units for padding */
+}
+
+/* Adjust padding for smaller screens */
+@media (max-width: 768px) {
+  .footer {
+    padding: 0.5em; /* Reduce padding on smaller screens */
   }
+}
