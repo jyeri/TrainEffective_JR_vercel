@@ -1,0 +1,9 @@
+/* SingleUser.css */
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Make the user list item responsive */
+  }

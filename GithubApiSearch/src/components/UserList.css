@@ -1,0 +1,87 @@
+/* UserList.css */
+
+/* User-list in position relative */
+.user-list {
+  position: relative;
+  max-width: calc(100% - 40px); /* Set maximum width to 100% of the screen width minus 40px */
+  width: 75%;
+  min-height: calc(100vh - 120px); /* Set minimum height to 100% of viewport height minus space for footer */
+  margin: 0 auto;
+  padding: 20px; /* Add padding */
+}
+
+/* Adjust list size for smaller screens */
+@media (max-width: 768px) {
+  .user-list {
+    width: 90%; /* Reduce width for smaller screens */
+    height: 50vh; /* Reduce height for smaller screens */
+  }
+}
+
+/* Adjust list size for even smaller screens */
+@media (max-width: 480px) {
+  .user-list {
+    width: 95%; /* Further reduce width for even smaller screens */
+    height: 30vh; /* Further reduce height for even smaller screens */
+  }
+}
+  
+  .user-results {
+    list-style-type: none;
+    padding: 2px 2px; /* Add padding to create space on both sides */
+    max-height: 70vh;
+    overflow-y: scroll;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1;
+  }
+
+  /* list of the results, transition to make change to bw smoother */
+  li {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    width: 96%; /* Make the user list item responsive, 96 to offset scroll */
+  }
+  
+  li:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* when hovered profile picture should get colors */
+  li:hover .avatar {
+    filter: grayscale(0%);
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  /* profile picture */
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    filter: grayscale(100%);
+  }
+
+  @media (max-width: 100px) {
+    .avatar {
+      display: none; /* Hide the avatar when the window width is 100px or smaller */
+    }
+  }
+  
+  .username {
+    font-size: 16px;
+    color: #333;
+  }

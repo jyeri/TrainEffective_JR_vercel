@@ -1,0 +1,13 @@
+.input-container {
+    /* Container for user inputs */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 50%; /* Take up full width of parent container */
+  }
+  
+  .input-container input {
+    /* Set input box width to 100% of its parent container */
+    width: 100%;
+    max-width: 350px; /* Optional: Set maximum width to prevent it from becoming too wide */
+  }
