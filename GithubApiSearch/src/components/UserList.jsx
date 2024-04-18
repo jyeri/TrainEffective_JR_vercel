@@ -9,7 +9,6 @@ function UserList({ searchQuery }) {
   const [error, setError] = useState(null);
   const [showTypeahead, setShowTypeahead] = useState(false); // Add state for controlling visibility of typeahead
 
-  // https://www.altcademy.com/blog/how-to-throw-an-error-in-javascript/
   // useEffect hook to fetch data when searchQuery changes
   useEffect(() => {
     const fetchData = async () => {
@@ -22,8 +21,10 @@ function UserList({ searchQuery }) {
             throw new Error(`Failed to fetch data: Try again in one minute.`);
           }
           const data = await response.json();
-          // Update the users state with the first 20 users from the response, just because showing all users is not practical
-          setUsers(data.items.slice(0, 20));
+          // Filter the users to only include those whose username contains the search query
+          const matches = data.items.filter(user => user.login.toLowerCase().includes(searchQuery.toLowerCase()));
+          // Update the users state with the matches
+          setUsers(matches);
           // Clear the error state
           setError(null);
           // Show the typeahead
@@ -56,7 +57,7 @@ function UserList({ searchQuery }) {
         <ul className="user-results">
           {/* Map over the users state and render a SingleUser component for each user */}
           {users.map(user => (
-            <SingleUser key={user.id} user={user} />
+            <SingleUser key={user.id} user={user} searchQuery={searchQuery} />
           ))}
         </ul>
       )}

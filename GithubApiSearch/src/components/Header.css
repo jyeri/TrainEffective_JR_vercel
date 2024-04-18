@@ -3,6 +3,7 @@
 .Header-text {
     color: #5f5f5f; /* Change the color */
     text-align: center; /* Center the text */
+    margin-top: 50px;
     padding: 1em; /* Add some padding */
     background-color: #f2f2f2; /* Add a background color */
     border-radius: 1em; /* Round the corners */
@@ -14,4 +15,18 @@
   
   .Header-text:hover {
     color: #000000; /* Change the color on hover */
+  }
+
+  /* If the width of the viewport is 600px or less, set the margin-top to 20px */
+  @media (max-width: 600px) {
+    .Header-text {
+      margin-top: 20px;
+    }
+  }
+  
+  /* If the width of the viewport is 900px or less, set the margin-top to 30px */
+  @media (max-width: 900px) {
+    .Header-text {
+      margin-top: 30px;
+    }
   }

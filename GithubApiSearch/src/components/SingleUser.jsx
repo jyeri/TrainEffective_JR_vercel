@@ -3,7 +3,13 @@ import React from 'react';
 import './SingleUser.css';
 
 // SingleUser component
-const SingleUser = ({user}) => {
+const SingleUser = ({user, searchQuery}) => {
+  const username = user.login;
+  const queryIndex = username.toLowerCase().indexOf(searchQuery.toLowerCase());
+  const beforeMatch = username.slice(0, queryIndex);
+  const match = username.slice(queryIndex, queryIndex + searchQuery.length);
+  const afterMatch = username.slice(queryIndex + searchQuery.length);
+
   // Render the SingleUser component
   return (
     <li>
@@ -13,7 +19,11 @@ const SingleUser = ({user}) => {
             {/* User's avatar. The alt attribute provides alternative text for users who can't see the image. */}
             <img src={user.avatar_url} alt={user.login} className="avatar" />
             {/* User's username */}
-            <span className="username">{user.login}</span>
+            <span className="username">
+              <span>{beforeMatch}</span>
+              <span className="highlight">{match}</span>
+              <span>{afterMatch}</span>
+            </span>
         </a>
     </li>
   )

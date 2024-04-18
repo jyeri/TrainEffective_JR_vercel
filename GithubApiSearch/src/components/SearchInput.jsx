@@ -13,6 +13,7 @@ function SearchInput({ setSearchQuery }) {
   // Render the SearchInput component
   return (
     <div className="input-container">
+      <span role="img" aria-label="search">🔍</span> {/* Add search icon */}
       {/* Input field for searching GitHub users. The onChange event handler calls the handleInputChange function. */}
       <input type="text" placeholder="Who are you looking for today?" onChange={handleInputChange} />
     </div>
