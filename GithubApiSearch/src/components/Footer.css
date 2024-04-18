@@ -1,18 +1,14 @@
-/* Footer.css */
-
+/* Styles for the footer */
 .footer {
-  position: fixed; /* Fixed positioning */
-  bottom: 0; /* Align to the bottom of the viewport */
-  left: 0; /* Align to the left edge of the viewport */
-  width: 100%; /* Take up full width */
-  background-color: #333; /* Example background color */
-  color: #fff; /* Example text color */
-  padding: 1em; /* Use relative units for padding */
-}
-
-/* Adjust padding for smaller screens */
-@media (max-width: 768px) {
-  .footer {
-    padding: 0.5em; /* Reduce padding on smaller screens */
-  }
+  position: fixed; /* Fix the position of the footer at the bottom of the page */
+  bottom: 0; /* Align the footer at the bottom */
+  left: 0; /* Align the footer to the left */
+  width: 100%; /* Make the footer span the full width of the page */
+  height: 1em; /* Set a specific height */
+  padding: 0.15em; /* Add some padding around the content */
+  background-color: #333; /* Dark gray background */
+  color: #fff; /* White text */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center the text horizontally */
+  align-items: center; /* Center the text vertically */
 }

@@ -1,50 +1,48 @@
-/* UserList.css */
-
-/* User-list in position relative */
+/* Styles for the user list container */
 .user-list {
   position: relative;
-  max-width: calc(100% - 40px); /* Set maximum width to 100% of the screen width minus 40px */
+  max-width: calc(100% - 40px);
   width: 75%;
-  min-height: calc(100vh - 120px); /* Set minimum height to 100% of viewport height minus space for footer */
+  height: calc(100vh - 8em); /* Adjusted to account for header and footer */
   margin: 0 auto;
-  padding: 20px; /* Add padding */
+  padding: 20px;
 }
 
-/* Adjust list size for smaller screens */
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .user-list {
-    width: 90%; /* Reduce width for smaller screens */
-    height: 50vh; /* Reduce height for smaller screens */
+    width: 90%;
+    height: calc(100vh - 7em); /* Adjusted for smaller screens */
   }
 }
 
-/* Adjust list size for even smaller screens */
 @media (max-width: 480px) {
   .user-list {
-    width: 95%; /* Further reduce width for even smaller screens */
-    height: 30vh; /* Further reduce height for even smaller screens */
+    width: 95%;
+    height: calc(100vh - 6em); /* Adjusted for even smaller screens */
   }
 }
-  
+
+/* Styles for the user results list */
 .user-results {
   list-style-type: none;
   padding: 2px 2px; /* Add padding to create space on both sides */
-  max-height: 70vh;
+  max-height: 60vh;
   overflow-y: scroll;
   background-color: #f2f2f2; /* Add a background color */
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   width: 100%;
   position: absolute;
-  top: 2px;
+  top: 1px;
   left: 0;
   right: 0;
   margin: 0 auto;
   z-index: 1;
-  text-decoration: none; /* REMOVE UNDERLINING IN LINKS */
+  text-decoration: none; /* Remove underlining in links */
 }
 
-/* list of the results, transition to make change to bw smoother */
+/* Styles for the user list items */
 li {
   padding: 5px;
   border-bottom: 1px solid #ccc;
@@ -58,18 +56,16 @@ li:hover {
   background-color: #f5f5f5;
 }
 
-/* when hovered profile picture should get colors */
 li:hover .avatar {
   filter: grayscale(0%);
   border: rgb(123, 0, 255) 1px solid;
 }
 
-/* last item should not have broder */
 li:last-child {
   border-bottom: none;
 }
 
-/* profile picture */
+/* Styles for the user avatar */
 .avatar {
   width: 50px;
   height: 50px;
@@ -84,12 +80,13 @@ li:last-child {
   }
 }
 
+/* Styles for the username */
 .username {
   font-size: 1rem; /* Use relative units for font size */
   color: #333;
-  
 }
 
+/* Remove underlining in links */
 a {
-  text-decoration: none; /* REMOVE UNDERLINING IN LINKS */
+  text-decoration: none;
 }

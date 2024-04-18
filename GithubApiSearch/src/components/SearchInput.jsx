@@ -1,24 +1,22 @@
-// Importing necessary modules
 import React from 'react';
 import './SearchInput.css'
 
-// SearchInput component
+// This component takes a setSearchQuery function as a prop, and renders an input field for searching GitHub users.
+// When the user types in the input field, setSearchQuery is called with the current input value.
 function SearchInput({ setSearchQuery }) {
-  // handleInputChange function
-  // It takes an event object and sets searchQuery to the value of the input
+  // Update the search query when the input value changes
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  // Render the SearchInput component
   return (
     <div className="input-container">
-      <span role="img" aria-label="search">🔍</span> {/* Add search icon */}
-      {/* Input field for searching GitHub users. The onChange event handler calls the handleInputChange function. */}
+      {/* Add search icon for visual indication */}
+      <span role="img" aria-label="search">🔍</span>
+      {/* The onChange event handler calls the handleInputChange function, which updates the search query. */}
       <input type="text" placeholder="Who are you looking for today?" onChange={handleInputChange} />
     </div>
   );
 }
 
-// Export the SearchInput component as the default export
 export default SearchInput;

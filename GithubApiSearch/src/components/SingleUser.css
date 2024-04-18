@@ -1,21 +1,21 @@
-/* SingleUser.css */
-
+/* Styles for the list item in the SingleUser component */
 li {
-  padding: 1em; /* Use relative units for padding */
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  transition: background-color 0.3s ease;
+  padding: 1em; /* Use relative units for padding to maintain proportional spacing */
+  border-bottom: 1px solid #ccc; /* Add a border at the bottom of each list item */
+  display: flex; /* Use flexbox for layout to align the avatar and username horizontally */
+  align-items: center; /* Vertically align the avatar and username in the center */
+  transition: background-color 0.3s ease; /* Smooth transition for background color changes */
   width: 100%; /* Make the user list item responsive */
 }
 
 /* Adjust padding for smaller screens */
 @media (max-width: 768px) {
   li {
-    padding: 0.5em; /* Reduce padding on smaller screens */
+    padding: 0.5em; /* Reduce padding on smaller screens to save space */
   }
 }
 
+/* Styles for the highlighted part of the username */
 .username .highlight {
-  font-weight: bold;
+  font-weight: bold; /* Make the highlighted part of the username bold */
 }

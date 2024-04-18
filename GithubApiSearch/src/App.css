@@ -1,22 +1,10 @@
-/* App.css */
-
-/* Styles for the body element */
-body {
-  /* Set the font family to Arial, sans-serif as a fallback */
-  font-family: Arial, sans-serif;
-  /* Remove default margin and padding */
-  margin: 0;
-  padding: 0;
-  /* Set the background color to a light gray */
-  background-color: #f8f9fa;
-}
-
-/* Styles for elements with the class of .App */
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center; /* This centers the text inside the container */
-}
+/* The .App class styles the root component of the application. 
+   It sets up a flex layout with centered alignment. */
+   .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+  }

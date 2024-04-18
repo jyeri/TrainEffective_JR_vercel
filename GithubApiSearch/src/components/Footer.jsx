@@ -1,15 +1,11 @@
-// Importing necessary modules
 import React from 'react';
 import './Footer.css';
 
-// Footer component
-export const Footer = () => {
-  // Render the Footer component
+// The Footer component renders the author's name.
+const Footer = () => {
   return (
-    // Footer with the author's name
-    <div className="footer">Jyri Rummukainen</div>
+    <footer className="footer">Jyri Rummukainen</footer>
   )
 }
 
-// Export the Footer component as the default export
 export default Footer;
