@@ -12,9 +12,13 @@ function SearchInput({ setSearchQuery }) {
   return (
     <div className="input-container">
       {/* Add search icon for visual indication */}
-      <span role="img" aria-label="search">🔍</span>
+      <div className="icon-container">
+        <span role="img" aria-label="search">🔍</span>
+      </div>
       {/* The onChange event handler calls the handleInputChange function, which updates the search query. */}
-      <input type="text" placeholder="Who are you looking for today?" onChange={handleInputChange} />
+      <div className="input-field-container">
+        <input type="text" placeholder="Who are you looking for today?" onChange={handleInputChange} />
+      </div>
     </div>
   );
 }
