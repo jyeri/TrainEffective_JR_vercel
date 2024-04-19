@@ -1,23 +1,28 @@
 import React from 'react';
 import './SearchInput.css'
 
-// This component takes a setSearchQuery function as a prop, and renders an input field for searching GitHub users.
-// When the user types in the input field, setSearchQuery is called with the current input value.
-function SearchInput({ setSearchQuery }) {
-  // Update the search query when the input value changes
+// SearchInput component that renders an input field for the user to enter a search query
+function SearchInput({ setSearchQuery, setIsInputFocused }) {
+  // Function to handle input change events
   const handleInputChange = (e) => {
+    // Update the search query state with the new input value
     setSearchQuery(e.target.value);
   };
 
   return (
     <div className="input-container">
-      {/* Add search icon for visual indication */}
       <div className="icon-container">
         <span role="img" aria-label="search">🔍</span>
       </div>
-      {/* The onChange event handler calls the handleInputChange function, which updates the search query. */}
       <div className="input-field-container">
-        <input type="text" placeholder="Who are you looking for today?" onChange={handleInputChange} />
+        {/* Input field where the user enters the search query */}
+        <input 
+          type="text" 
+          placeholder="Who are you looking for today?" 
+          onChange={handleInputChange} // Call handleInputChange when the input value changes
+          onFocus={() => setIsInputFocused(true)} // Set isInputFocused to true when the input field is focused
+          onBlur={() => setIsInputFocused(false)} // Set isInputFocused to false when the input field loses focus
+        />
       </div>
     </div>
   );
