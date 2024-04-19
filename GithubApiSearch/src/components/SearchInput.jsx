@@ -1,27 +1,36 @@
 import React from 'react';
 import './SearchInput.css'
 
-// SearchInput component that renders an input field for the user to enter a search query
+// SearchInput is a functional component that takes two props:
+// setSearchQuery - a function to update the search query state
+// setIsInputFocused - a function to update the input focus state
 function SearchInput({ setSearchQuery, setIsInputFocused }) {
-  // Function to handle input change events
+
+  // handleInputChange is a function that updates the search query state
+  // whenever the input field value changes
   const handleInputChange = (e) => {
-    // Update the search query state with the new input value
     setSearchQuery(e.target.value);
   };
 
+  // The component returns a div containing the search input field
   return (
     <div className="input-container">
       <div className="icon-container">
         <span role="img" aria-label="search">🔍</span>
       </div>
       <div className="input-field-container">
-        {/* Input field where the user enters the search query */}
+        {/* The input field updates the search query state on change,
+            sets the input focus state to true when it's focused,
+            and sets the input focus state to false with a delay when it loses focus */}
         <input 
           type="text" 
           placeholder="Who are you looking for today?" 
-          onChange={handleInputChange} // Call handleInputChange when the input value changes
-          onFocus={() => setIsInputFocused(true)} // Set isInputFocused to true when the input field is focused
-          onBlur={() => setIsInputFocused(false)} // Set isInputFocused to false when the input field loses focus
+          onChange={handleInputChange}
+          onFocus={() => setIsInputFocused(true)}
+          onBlur={() => {
+            // Add a delay before setting isInputFocused to false
+            setTimeout(() => setIsInputFocused(false), 200);
+          }}
         />
       </div>
     </div>
