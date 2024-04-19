@@ -1,3 +1,4 @@
+// Importing necessary libraries and styles
 import React from 'react';
 import './SingleUser.css';
 
@@ -16,9 +17,24 @@ const SingleUser = ({user, searchQuery}) => {
   const match = username.slice(queryIndex, queryIndex + searchQuery.length);
   const afterMatch = username.slice(queryIndex + searchQuery.length);
 
+  // Function to handle link click
+  const handleLinkClick = (e) => {
+    // Prevent the default link click behavior
+    e.preventDefault();
+
+    // Open the user's GitHub profile in a new tab
+    window.open(user.html_url, '_blank');
+  };
+
   // The component returns a link to the user's GitHub profile, with the matching part of the username highlighted
   return (
-    <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="user-link">
+    <a 
+      href={user.html_url} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="user-link"
+      onMouseDown={handleLinkClick} // Handle link click on mousedown event
+    >
       {/* If the search query is not empty, display the user's avatar */}
       {searchQuery.trim() !== '' && <img src={user.avatar_url} alt={user.login} className="avatar" />}
       <span className="username">
@@ -31,4 +47,5 @@ const SingleUser = ({user, searchQuery}) => {
   )
 }
 
+// Exporting the SingleUser component to be used in other parts of the application
 export default SingleUser;
