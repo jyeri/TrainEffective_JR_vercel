@@ -16,6 +16,7 @@ li {
 }
 
 /* Styles for the highlighted part of the username */
-.username .highlight {
-  font-weight: bold; /* Make the highlighted part of the username bold */
+.highlight {
+  font-weight: bold;
+  color: red;
 }

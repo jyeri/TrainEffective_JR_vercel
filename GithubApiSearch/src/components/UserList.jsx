@@ -6,74 +6,109 @@ import useDebounce from './UseDebounce';
 
 // UserList component that displays a list of users based on the search query
 function UserList({ searchQuery, isInputFocused }) {
-  // State variables for users, error message, typeahead visibility, and suggestion
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState(null);
-  const [showTypeahead, setShowTypeahead] = useState(false);
-  const [suggestion, setSuggestion] = useState('');
+  // State to store the users, error message, typeahead visibility, and suggestion.
+  // The useState hook is used to create this state variable and the function to update it.
+  const [state, setState] = useState({
+    users: [],
+    error: null,
+    showTypeahead: false,
+    suggestion: '',
+  });
 
-  // Debounce the search query to limit the number of API calls
+  // Debounce the search query to limit the number of API calls.
   const debouncedSearchQuery = useDebounce(searchQuery, 100);
 
-  // Use useEffect to fetch data whenever the debounced search query changes
+  // Use the useEffect hook to fetch data whenever the debounced search query changes.
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // If the search query is not empty, fetch data from the GitHub API
+        // Only fetch data if the debounced search query is not empty.
         if (debouncedSearchQuery.trim() !== '') {
-          const response = await fetch(`https://api.github.com/search/users?q=${debouncedSearchQuery}`);
-          if (!response.ok) {
-            throw new Error(`Failed to fetch data: Try again in one minute.`);
-          }
-          const data = await response.json();
-          // Filter the results to include only users whose login includes the search query
-          const matches = data.items.filter(user => user.login.toLowerCase().includes(debouncedSearchQuery.toLowerCase()));
-          // If there are no matches, set the error message and hide the typeahead
-          if (matches.length === 0) {
-            setError('I found no matches, you should check your spelling. Or just try typing "Jyeri"');
-            setUsers([]);
-            setShowTypeahead(false);
+          let users;
+          // Try to get the users from localStorage.
+          const cachedData = localStorage.getItem(debouncedSearchQuery);
+          if (cachedData) {
+            users = JSON.parse(cachedData);
           } else {
-            // If there are matches, set the users, clear the error message, and show the typeahead
-            setUsers(matches);
-            setError(null);
-            setShowTypeahead(true);
+            // If the users are not in localStorage, fetch them from the API.
+            const response = await fetch(`https://api.github.com/search/users?q=${debouncedSearchQuery}`);
+            // Handle errors from the API.
+            if (!response.ok) {
+              let errorMessage;
+              switch (response.status) {
+                case 403:
+                  errorMessage = 'Rate limit exceeded. Please try again later. Usually 1 minute does the trick.';
+                  break;
+                case 404:
+                  errorMessage = 'Users not found.';
+                  break;
+                default:
+                  errorMessage = 'An error occurred. Please try again.';
+              }
+              throw new Error(errorMessage);
+            }
+            const data = await response.json();
+            // Filter the users to only include those that match the search query.
+            users = data.items.filter(user => user.login.toLowerCase().includes(debouncedSearchQuery.toLowerCase()));
+            // Store the users in localStorage.
+            localStorage.setItem(debouncedSearchQuery, JSON.stringify(users));
+          }
+          // Update the state based on the fetched users.
+          if (users.length === 0) {
+            setState({
+              users: [],
+              error: 'I found no matches, you should check your spelling. Or just try typing "Jyeri"',
+              showTypeahead: false,
+              suggestion: '',
+            });
+          } else {
+            setState({
+              users: users,
+              error: null,
+              showTypeahead: true,
+              suggestion: '',
+            });
           }
         } else {
-          // If the search query is empty, clear the users and show the suggestion
-          setUsers([]);
-          setSuggestion('You should try searching for "Jyeri", I heard he is a great developer');
-          setError(null);
-          setShowTypeahead(true);
+          // If the search query is empty, show a suggestion.
+          setState({
+            users: [],
+            error: null,
+            showTypeahead: true,
+            suggestion: 'You should try searching for "Jyeri", I heard he is a great developer',
+          });
         }
       } catch (error) {
-        // If an error occurs, set the error message and hide the typeahead
-        setError(error.message);
-        setUsers([]);
-        setShowTypeahead(false);
+        // If an error occurs, update the state to show the error message.
+        setState({
+          users: [],
+          error: error.message,
+          showTypeahead: false,
+          suggestion: '',
+        });
       }
     };
 
-    // Call the fetchData function
+    // Call the fetchData function.
     fetchData();
   }, [debouncedSearchQuery]);
 
-  // Render the UserList component
+  // Render the UserList component.
   return (
     <div className="user-list">
       {/* Display the error message if it exists */}
-      {error && <div className="error-message">{error}</div>}
+      {state.error && <div className="error-message">{state.error}</div>}
       {/* Display the typeahead if it is visible and the input is focused */}
-      {showTypeahead && isInputFocused && (
+      {state.showTypeahead && isInputFocused && (
         <ul className="user-results">
           {/* Map over the users and display each one in a SingleUser component */}
-          {users.map((user, index) => (
-            <li key={index}>
+          {state.users.map((user) => (
+            <li key={user.id}>
               <SingleUser user={user} searchQuery={searchQuery} />
             </li>
           ))}
           {/* Display the suggestion if it exists */}
-          {suggestion && <li className='suggestion-text'>{suggestion}</li>}
+          {state.suggestion && <li className='suggestion-text'>{state.suggestion}</li>}
         </ul>
       )}
     </div>

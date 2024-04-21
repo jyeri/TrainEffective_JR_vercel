@@ -1,10 +1,12 @@
 import React from 'react'
 import './Header.css'
 
-// The Header component renders the title of the application.
+// Header is a functional component that renders the title of the application.
 const Header = () => {
+  // Render the Header component.
   return (
-    <header className='Header-text'>Profile finder 9.0</header>
+    // It contains the title of the application.
+    <header className='Header-text'>Profile finder 11.0</header>
   )
 }
 
