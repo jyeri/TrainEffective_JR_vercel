@@ -1,6 +1,3 @@
-/* SearchInput.css */
-
-/* Styles for the main container of the input field */
 .input-container {
   text-align: center; /* Center the text and the placeholder */
   position: relative; /* Position the container relative to its normal position */
@@ -19,17 +16,14 @@
   color: #fff; /* white text */
 }
 
-/* Styles for the container of the search icon */
 .icon-container {
   padding-right: 10px; /* Add some spacing to the right of the search icon */
 }
 
-/* Styles for the container of the input field */
 .input-field-container {
   width: 100%; /* Set the width to 100% of the parent element */
 }
 
-/* Styles for the input field */
 .input-container input {
   text-align: center; /* Center the text and the placeholder */
   width: 100%; /* Set the width to 100% of the parent element */
@@ -41,7 +35,6 @@
   color: #fff; /* white text */
 }
 
-/* Styles for the placeholder text in the input field */
 .input-container input::placeholder {
   color: #fff; /* Set the placeholder text to white */
 }

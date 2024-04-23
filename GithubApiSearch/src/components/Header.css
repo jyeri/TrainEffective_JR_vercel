@@ -1,17 +1,17 @@
 .Header-text {
-  margin-top: 1em;
-  color: #fff; /* white text */
+  margin-top: 1em; /* Add top margin */
+  color: #fff; /* White text */
   text-align: center; /* Center the text horizontally */
-  padding: 0.5em; /* Add some padding around the text */
-  background-color: #333; /* dark grey background */
+  padding: 0.5em; /* Add padding around the text */
+  background-color: #333; /* Dark grey background */
   border-radius: 1em; /* Rounded corners */
   font-family: 'Arial', sans-serif; /* Use Arial font, with a sans-serif fallback */
   text-transform: uppercase; /* Transform the text to uppercase */
-  letter-spacing: 0.5em; /* Add some spacing between the letters */
+  letter-spacing: 0.5em; /* Add spacing between the letters */
   transition: color 0.3s ease; /* Smooth transition for color changes */
 }
 
 /* Change the text color to red when the user hovers over the header */
 .Header-text:hover {
-  color: #f00; /* red text */
+  color: #f00; /* Red text */
 }

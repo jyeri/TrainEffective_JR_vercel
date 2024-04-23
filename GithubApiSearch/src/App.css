@@ -1,12 +1,10 @@
-/* The .App class styles the root component of the application. 
-   It sets up a flex layout with centered alignment. */
-   .App {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: top;
-    margin-top: 0em;
-    height: 100vh; /* Full height */
-    text-align: center;
-    color: #fff; /* white text */
-  }
+.App {
+  display: flex; /* Set up a flex layout */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: top; /* Align items to the top */
+  margin-top: 0em; /* No top margin */
+  height: 100vh; /* Full height */
+  text-align: center; /* Center the text */
+  color: #fff; /* White text */
+}
