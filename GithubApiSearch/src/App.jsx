@@ -20,7 +20,10 @@ function App() {
   // and UserList components. The SearchInput and UserList components are
   // passed props, including the state variables and the functions to update them.
   return (
-    <div className="App">
+    <div 
+      className="App"
+      onClick={(e) => e.stopPropagation()} // Add this line
+    >
       <Header />
       {/* The SearchInput component allows the user to enter a search query. 
           It receives setSearchQuery and setIsInputFocused as props to allow it 

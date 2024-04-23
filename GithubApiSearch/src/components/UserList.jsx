@@ -95,7 +95,10 @@ function UserList({ searchQuery, isInputFocused }) {
 
   // Render the UserList component.
   return (
-    <div className="user-list">
+    <div 
+      className="user-list"
+      onMouseDown={(e) => e.preventDefault()}
+    >
       {/* Display the error message if it exists */}
       {state.error && <div className="error-message">{state.error}</div>}
       {/* Display the typeahead if it is visible and the input is focused */}
@@ -103,7 +106,13 @@ function UserList({ searchQuery, isInputFocused }) {
         <ul className="user-results">
           {/* Map over the users and display each one in a SingleUser component */}
           {state.users.map((user) => (
-            <li key={user.id}>
+            <li 
+              key={user.id} 
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(user.html_url, '_blank');
+              }}
+            >
               <SingleUser user={user} searchQuery={searchQuery} />
             </li>
           ))}
@@ -114,5 +123,4 @@ function UserList({ searchQuery, isInputFocused }) {
     </div>
   );
 }
-
 export default UserList;

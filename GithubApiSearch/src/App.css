@@ -4,7 +4,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    justify-content: top;
+    margin-top: 0em;
+    height: 100vh; /* Full height */
     text-align: center;
+    color: #fff; /* white text */
   }

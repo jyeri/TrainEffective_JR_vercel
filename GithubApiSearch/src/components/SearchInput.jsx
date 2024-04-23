@@ -11,6 +11,8 @@ function SearchInput({ setSearchQuery, setIsInputFocused }) {
     setSearchQuery(e.target.value);
   };
 
+  
+
   // Render the SearchInput component.
   return (
     <div className="input-container">
