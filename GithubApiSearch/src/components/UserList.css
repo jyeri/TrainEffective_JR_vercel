@@ -20,7 +20,7 @@
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   width: 100%;
-  height: 100%;
+  max-height: 60vh;
   position: relative;
   top: 1px;
   margin: 0 auto;
@@ -31,14 +31,14 @@
 @media (max-width: 768px) {
   .user-list {
     width: 90%;
-    height: 80%; /* Adjust this value as needed */
+    height: 60%; /* Adjust this value as needed */
   }
 }
 
 @media (max-width: 480px) {
   .user-list {
-    width: 95%;
-    height: 80%; /* Adjust this value as needed */
+    width: 90%;
+    height: 60%; /* Adjust this value as needed */
   }
 }
 
@@ -47,7 +47,7 @@ li {
   padding: 5px;
   border-bottom: 1px solid #ccc;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   transition: background-color 0.3s ease;
   width: 96%; /* Make the user list item responsive, 96 to offset scroll */
