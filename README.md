@@ -24,20 +24,30 @@ The application is bootstrapped with Vite and deployed on Vercel. It does not us
 
 - App in general
     - Divided in 3 sections, each their own comp.
+
         1. Header for title
+
         2. SearchInput
+
             - Allows user to enter input
             - Takes two props, setSearchQuery and SetIsInputFocused
             - on input change calls HandleInputQuery to update search to target value.
             - Using IsInputFocuses decides should typeahead be shown or not.
             - OnBlur function delays activation of IsInputFocused
             - Basic emoji to prevent searchbar from going unnoticed by any chance
+
         3. UserList
+
             - forms a list of users to be shown
             - take states of searchQuery and isInputFocused as prop
             - First make object for handling errors and suggestion text
                 - all binded in same object, not as efficient but SO MUCH easier to read and follow. Didn't affect performance enough to justify using multiple useStates.
             - Debounce the searchQuery to prevent too many api calls.
+                1. The useDebounce hook takes two arguments: value and delay. value is the value to be debounced, and delay is the amount of time (in milliseconds) to delay the update of the value.
+                2. Inside the useDebounce hook, a state variable debouncedValue is created using the useState hook. This state variable holds the debounced version of the value.
+                3. The useEffect hook is used to update debouncedValue after the specified delay whenever the value or delay changes. This is done by setting a timeout that updates debouncedValue to the current value after delay milliseconds.
+                4. The useEffect hook returns a cleanup function that clears the timeout. This function is called when the component unmounts or before the next time the effect runs.
+                5. The useDebounce hook returns the debouncedValue.
             - Function check if there is already searchQuery from previous call (Local storage)
                 - Again not most efficient but works great giving the idea of this app.
             - If there is none, we fetch from github api
@@ -82,6 +92,11 @@ The application is bootstrapped with Vite and deployed on Vercel. It does not us
 - Naming and id's on everything should much more const, becuase its wasting time and making it harder to read if the naming isn't obivious.
 - Try to lose the mentality from C where every piece of memory has to be strictly allocated and passed for re-use.
 - When starting KEEP IN MIND THE DEVICE AND USE CASE. it is so much easier to write responsive app than modifying non resposive to be one.
+- More error handling, more use of memo for effiency
+- Find good alternative for smal localstorage
+- try to decrease use of inline functions and move towards Callback hooks
+- Avoid prop drilling in future, in this scale it should be fine, but makes problems in larger scale
+- Api URL shouldn't be hardcoded if possible, instead enviro variable.
 
 ### Thought before starting
 
