@@ -109,20 +109,36 @@ The application is bootstrapped with Vite and deployed on Vercel. It does not us
 ### Repository
 
 Root
+
 |- GithubApiSearch
+
 |  |- Src
+
 |  |  |- App.jsx
+
 |  |  |- App.css
+
 |  |  |- Main.jsx
+
 |  |  |- Components
+
 |  |  |  |- Header.jsx / .css
+
 |  |  |  |- SearchInput.jsx / .css
+
 |  |  |  |- UserList.jsx / .css
+
 |  |  |  |- SingleUser.jsx / .css
+
 |  |  |  |- UseDebounde.jsx
+
 |  |  |  |- Footer.jsx / .css (DELETED)
+
 |  |  |- Bloatware etc.
+
 |  |- Index.html
+
 |  |- Vite set-up files.
+
 |- README.md
 
