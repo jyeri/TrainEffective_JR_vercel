@@ -108,6 +108,23 @@ The application is bootstrapped with Vite and deployed on Vercel. It does not us
 
 ### Repository
 
+```mermaid
+flowchart TD;
+    A[Root] --> B[Readme.md];
+    A[Root] --> B[GithubApiSearch];
+    B --> C[Src];
+    B --> D[Vite set-up files];
+    B --> E[Index.html];
+    C --> F[App.jsx + .css];
+    C --> G[Main.jsx + index.css];
+    C --> H[Components];
+    H --> I[Header.jsx + .css]
+    H --> J[InputSearch.jsx + .css]
+    H --> K[UserList.jsx + .css]
+    H --> L[SingleUser.jsx + .css]
+    H --> M[UseDebounce.jsx]
+```
+
 Root
 
 |- GithubApiSearch
@@ -130,7 +147,7 @@ Root
 
 |  |  |  |- SingleUser.jsx / .css
 
-|  |  |  |- UseDebounde.jsx
+|  |  |  |- UseDebounce.jsx
 
 |  |  |  |- Footer.jsx / .css (DELETED)
 
