@@ -110,8 +110,9 @@ The application is bootstrapped with Vite and deployed on Vercel. It does not us
 
 ```mermaid
 flowchart TD;
-    A[Root] --> B[Readme.md];
-    A[Root] --> B[GithubApiSearch];
+    A[Root]
+    A --> B[Readme.md];
+    A --> B[GithubApiSearch];
     B --> C[Src];
     B --> D[Vite set-up files];
     B --> E[Index.html];
@@ -124,38 +125,4 @@ flowchart TD;
     H --> L[SingleUser.jsx + .css]
     H --> M[UseDebounce.jsx]
 ```
-
-Root
-
-|- GithubApiSearch
-
-|  |- Src
-
-|  |  |- App.jsx
-
-|  |  |- App.css
-
-|  |  |- Main.jsx
-
-|  |  |- Components
-
-|  |  |  |- Header.jsx / .css
-
-|  |  |  |- SearchInput.jsx / .css
-
-|  |  |  |- UserList.jsx / .css
-
-|  |  |  |- SingleUser.jsx / .css
-
-|  |  |  |- UseDebounce.jsx
-
-|  |  |  |- Footer.jsx / .css (DELETED)
-
-|  |  |- Bloatware etc.
-
-|  |- Index.html
-
-|  |- Vite set-up files.
-
-|- README.md
 
