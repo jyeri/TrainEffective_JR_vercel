@@ -111,7 +111,7 @@ The application is bootstrapped with Vite and deployed on Vercel. It does not us
 ```mermaid
 flowchart TD;
     A[Root]
-    A --> B[Readme.md];
+    A --> N[Readme.md];
     A --> B[GithubApiSearch];
     B --> C[Src];
     B --> D[Vite set-up files];
